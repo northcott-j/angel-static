@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 12.5.0
+script: echo "npm test temporarily disabled"
+branches:
+  only:
+    - master
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: "$AWS_BUCKET_NAME"
+  skip_cleanup: true
+  region: "us-east-1"
+  acl: public_read
