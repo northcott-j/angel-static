@@ -30,17 +30,26 @@ class MachineLearning extends Component {
     }
     const score = data[0];
     const magnitude = data[1];
+    const query = this.state.appState.parseQuery(this.props.router.location);
     if ((score * magnitude) <= sentimentFloor) {
-      const query = this.state.appState.parseQuery(this.props.router.location);
-      query.score = 2;
-      const newQuery = this.state.appState.makeQuery(query);
-      const pathname = this.props.router.location.pathname;
-      this.props.router.history.push({
-        pathname: pathname,
-        search: newQuery
-      });
+      if (query.score >= 2) {
+        NotificationManager.warning('We would like to hear more. Please reach out to us.', 'Chat Us!', 3000);
+        this.setState({ submitted: true })
+      } else {
+        query.score = 2;
+        const newQuery = this.state.appState.makeQuery(query);
+        const pathname = this.props.router.location.pathname;
+        this.props.router.history.push({
+          pathname: pathname,
+          search: newQuery
+        });
+      }
     } else {
-      NotificationManager.success('Please reach out if you have any questions!', 'Thanks you!', 3000);
+      if (query.score < 2) {
+        NotificationManager.success('Please reach out if you have any questions!', 'Thanks you!', 3000);
+      } else {
+        NotificationManager.warning('But please still chat with us or a resource if needed', 'Thanks!', 3000);
+      }
       this.setState({ submitted: true })
     }
   }
