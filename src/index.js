@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Routes from './routes';
+import 'react-notifications/lib/notifications.css';
 import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(

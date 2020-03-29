@@ -22,14 +22,20 @@ class Resources extends Component {
 
   render() {
     const resourceCards = this.state.data.map((resource) =>
-        <div className="m-4" key={ resource.name }>
-            <ResourceCard { ...resource }/>
-        </div>
+      <div className="m-4" key={ resource.name }>
+          <ResourceCard { ...resource }/>
+      </div>
     );
+
+    const header = () => {
+      if (this.state.data.length > 0) {
+        return (<h2 style={ { color: "white" } }>Contact Local Resources</h2>);
+      }
+    }
 
     return (
       <div className="container pt-4">
-        <h2 style={ { color: "white" } }>Contact Local Resources</h2>
+        { header() }
         <div className="row">
           <div style={ { width: "100%" } } className="d-flex align-items-stretch justify-content-center flex-wrap">
             { resourceCards }

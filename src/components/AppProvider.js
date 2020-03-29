@@ -17,6 +17,9 @@ export default class AppProvider extends Component {
       parseQuery: function(location) {
         return queryString.parse(this.state.getQuery(location));
       }.bind(this),
+      makeQuery: function(qs) {
+        return queryString.stringify(qs);
+      },
       getResources: async function(search) {
         return await window.superFetch('resources/' + search);
       },

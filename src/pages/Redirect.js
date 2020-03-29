@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import ChatBot from '../components/ChatBot';
 import UrgentBlock from '../components/UrgentBlock';
+import WarningBlock from '../components/WarningBlock';
 import Resources from '../components/Resources';
 import MachineLearning from '../components/MachineLearning';
 import Education from '../components/Education';
@@ -23,20 +24,26 @@ class Redirect extends Component {
     };
 
     const showUrgentBlock = () => {
-      if (this.props.query.score >= 2) {
+      if (this.props.query.score >= 3) {
         return (<UrgentBlock />)
       }
     };
 
+    const showWarningBlock = () => {
+      if (this.props.query.score === '2') {
+        return (<WarningBlock />)
+      }
+    };
+
     const showResources = () => {
-      if (this.props.query.score >= 1) {
+      if (this.props.query.score >= 2) {
         return (<Resources context={ this.props.context } search={ this.props.search } />)
       }
     };
 
     const showMachineLearning = () => {
-      if (this.props.query.score >= 0) {
-        return (<MachineLearning context={ this.props.context } />)
+      if (this.props.query.score >= 0 && this.props.query.score <= 1) {
+        return (<MachineLearning context={ this.props.context } router={ this.props.router } />)
       }
     };
 
@@ -51,6 +58,7 @@ class Redirect extends Component {
                        backgroundColor: "rgba(159, 74, 234, 0.39)", paddingTop: "20px" } }>
         { showChatBot() }
         { showUrgentBlock() }
+        { showWarningBlock() }
         { showResources() }
         { showMachineLearning() }
         { showEducation() }

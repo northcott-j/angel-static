@@ -37,6 +37,7 @@ class App extends Component {
           {(context) => (
             <div className="App">
               <div className="bg-g1 size1 flex-w flex-col-c-sb p-b-35 respon1">
+                <NotificationContainer />
                 {this.props.children}
                 <span className="s1-txt3 txt-center">
                   @ 2020 Recorded Future & Expedition Hacks
@@ -45,7 +46,6 @@ class App extends Component {
             </div>
           )}
         </ AppContext.Consumer>
-        <NotificationContainer />
       </AppProvider>
     );
   }
