@@ -2,8 +2,34 @@ import React, { Component } from 'react';
 import './App.css';
 import AppProvider from './components/AppProvider';
 import AppContext from './app-context';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 class App extends Component {
+  componentWillMount() {
+    const fetch = window.fetch;
+    window.superFetch = async function() {
+      const endpoint = arguments[0];
+      const options = arguments[1] || {};
+      arguments[0] = process.env.REACT_APP_API_URL + endpoint;
+      // Update credentials to include cookie
+      options['credentials'] = 'include';
+      arguments[1] = options;
+
+      const rawResponse = await fetch.apply(global, arguments)
+      const response = await rawResponse.json()
+
+      if(response.error) {
+        NotificationManager.error(response.error);
+      }
+
+      if (response.data) {
+        return Promise.resolve(response.data);
+      } else {
+        return Promise.resolve(response)
+      }
+    }
+  }
+
   render() {
     return (
       <AppProvider>
@@ -19,6 +45,7 @@ class App extends Component {
             </div>
           )}
         </ AppContext.Consumer>
+        <NotificationContainer />
       </AppProvider>
     );
   }

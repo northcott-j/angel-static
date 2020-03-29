@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
 import ChatBot from '../components/ChatBot';
 import UrgentBlock from '../components/UrgentBlock';
 import Resources from '../components/Resources';
@@ -28,14 +29,14 @@ class Redirect extends Component {
     };
 
     const showResources = () => {
-      if (this.props.query.score >= 0) {
-        return (<Resources />)
+      if (this.props.query.score >= 1) {
+        return (<Resources context={ this.props.context } search={ this.props.search } />)
       }
     };
 
     const showMachineLearning = () => {
       if (this.props.query.score >= 0) {
-        return (<MachineLearning />)
+        return (<MachineLearning context={ this.props.context } />)
       }
     };
 
@@ -46,14 +47,14 @@ class Redirect extends Component {
     };
 
     return (
-        <div>
-          { this.props.query.name }
-          { showChatBot() }
-          { showUrgentBlock() }
-          { showResources() }
-          { showMachineLearning() }
-          { showEducation() }
-        </div>
+      <Paper style={ { display: "flex", flexDirection: "column", flex: 1, width: "95%", margin: "20px 0",
+                       backgroundColor: "rgba(159, 74, 234, 0.39)", paddingTop: "20px" } }>
+        { showChatBot() }
+        { showUrgentBlock() }
+        { showResources() }
+        { showMachineLearning() }
+        { showEducation() }
+      </Paper>
     );
   }
 }
