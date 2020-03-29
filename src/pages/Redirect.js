@@ -41,8 +41,14 @@ class Redirect extends Component {
       }
     };
 
-    const showMachineLearning = () => {
-      if (this.props.query.score >= 0 && this.props.query.score <= 1) {
+    const showMachineLearningHigh = () => {
+      if (this.props.query.score <= 1) {
+        return (<MachineLearning context={ this.props.context } router={ this.props.router } />)
+      }
+    };
+
+    const showMachineLearningLow = () => {
+      if (this.props.query.score === '3') {
         return (<MachineLearning context={ this.props.context } router={ this.props.router } />)
       }
     };
@@ -60,8 +66,9 @@ class Redirect extends Component {
         { showUrgentBlock() }
         { showWarningBlock() }
         { showResources() }
-        { showMachineLearning() }
+        { showMachineLearningHigh() }
         { showEducation() }
+        { showMachineLearningLow() }
       </Paper>
     );
   }
