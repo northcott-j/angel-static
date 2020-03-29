@@ -29,14 +29,14 @@ class Redirect extends Component {
     };
 
     const showResources = () => {
-      if (this.props.query.score >= 0) {
+      if (this.props.query.score >= 1) {
         return (<Resources context={ this.props.context } search={ this.props.search } />)
       }
     };
 
     const showMachineLearning = () => {
       if (this.props.query.score >= 0) {
-        return (<MachineLearning />)
+        return (<MachineLearning context={ this.props.context } />)
       }
     };
 
@@ -48,7 +48,7 @@ class Redirect extends Component {
 
     return (
       <Paper style={ { display: "flex", flexDirection: "column", flex: 1, width: "95%", margin: "20px 0",
-                       backgroundColor: "rgba(159, 74, 234, 0.39)"} }>
+                       backgroundColor: "rgba(159, 74, 234, 0.39)", paddingTop: "20px" } }>
         { showChatBot() }
         { showUrgentBlock() }
         { showResources() }

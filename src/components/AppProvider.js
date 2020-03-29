@@ -18,8 +18,10 @@ export default class AppProvider extends Component {
         return queryString.parse(this.state.getQuery(location));
       }.bind(this),
       getResources: async function(search) {
-        console.log('here')
-        return await fetch('resources/' + search);
+        return await window.superFetch('resources/' + search);
+      },
+      runAnalysis: async function(text) {
+        return await window.superFetch('analysis/sentiment?text=' + text);
       }
     }
   }

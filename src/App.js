@@ -7,7 +7,7 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 class App extends Component {
   componentWillMount() {
     const fetch = window.fetch;
-    window.fetch = async function() {
+    window.superFetch = async function() {
       const endpoint = arguments[0];
       const options = arguments[1] || {};
       arguments[0] = process.env.REACT_APP_API_URL + endpoint;
