@@ -1,12 +1,42 @@
 import React, { Component } from 'react';
+import ResourceCard from './ResourceCard';
+
 
 class Resources extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      appState: this.props.context,
+      search: this.props.search,
+      data: []
+    };
+  }
+
+  async componentDidMount() {
+    if (true) {
+      const data = await this.state.appState.getResources(this.state.search);
+      this.setState({ data })
+    }
+  }
+
   render() {
+    const resourceCards = this.state.data.map((resource) =>
+        <div className="m-4" key={ resource.name }>
+            <ResourceCard { ...resource }/>
+        </div>
+    );
+
     return (
-      <div>
-        <h3>Location Based Resources</h3>
+      <div className="container pt-4">
+        <h2 style={ { color: "white" } }>Contact Local Resources</h2>
+        <div className="row">
+          <div style={ { width: "100%" } } className="d-flex align-items-stretch justify-content-center flex-wrap">
+            { resourceCards }
+          </div>
+        </div>
       </div>
-    )
+    );
   };
 };
 

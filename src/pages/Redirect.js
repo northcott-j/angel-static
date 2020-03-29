@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
 import ChatBot from '../components/ChatBot';
 import UrgentBlock from '../components/UrgentBlock';
 import Resources from '../components/Resources';
@@ -29,7 +30,7 @@ class Redirect extends Component {
 
     const showResources = () => {
       if (this.props.query.score >= 0) {
-        return (<Resources />)
+        return (<Resources context={ this.props.context } search={ this.props.search } />)
       }
     };
 
@@ -46,14 +47,14 @@ class Redirect extends Component {
     };
 
     return (
-        <div style={ { display: "flex", flexDirection: "column", flex: 1, width: "100%" } }>
-          { this.props.query.name }
-          { showChatBot() }
-          { showUrgentBlock() }
-          { showResources() }
-          { showMachineLearning() }
-          { showEducation() }
-        </div>
+      <Paper style={ { display: "flex", flexDirection: "column", flex: 1, width: "95%", margin: "20px 0",
+                       backgroundColor: "rgba(159, 74, 234, 0.39)"} }>
+        { showChatBot() }
+        { showUrgentBlock() }
+        { showResources() }
+        { showMachineLearning() }
+        { showEducation() }
+      </Paper>
     );
   }
 }

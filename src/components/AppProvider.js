@@ -7,13 +7,19 @@ export default class AppProvider extends Component {
     super();
 
     this.state = {
-      resources: {},
-      parseQuery: function(location) {
+      getQuery: function(location) {
         if (location && location.search) {
-          return queryString.parse(location.search);
+          return location.search;
         } else {
           return "";
         }
+      },
+      parseQuery: function(location) {
+        return queryString.parse(this.state.getQuery(location));
+      }.bind(this),
+      getResources: async function(search) {
+        console.log('here')
+        return await fetch('resources/' + search);
       }
     }
   }

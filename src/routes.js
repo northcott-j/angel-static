@@ -12,7 +12,9 @@ const Routes = () => (
           {(context) => (
             <Switch>
               <Route exact path="/" render={(props) => <Home context={ context } query={ context.parseQuery(props.location) } />} />
-              <Route exact path="/resources" render={(props) => <Redirect context={ context } query={ context.parseQuery(props.location) } />} />
+              <Route exact path="/resources" render={(props) => <Redirect context={ context }
+                                                                          search={ context.getQuery(props.location) }
+                                                                          query={ context.parseQuery(props.location) } />} />
             </Switch>
           )}
         </ AppContext.Consumer>
