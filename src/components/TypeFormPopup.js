@@ -27,7 +27,7 @@ const buttonStyle = {
 class TypeFormPopup extends Component {
   componentDidMount() {
     const popup = typeformEmbed.makePopup(
-      "https://juanathan39angel.typeform.com/to/wTXfpK",
+      "https://juanathan39angel.typeform.com/to/UEZnxw",
       {
         mode: 'popup',
         onSubmit: function() {
