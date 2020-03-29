@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - 12.5.0
+before_script:
+  - npm install
+  - npm run build
 script: echo "npm test temporarily disabled"
 branches:
   only:
@@ -13,3 +16,4 @@ deploy:
   skip_cleanup: true
   region: "us-east-1"
   acl: public_read
+  local_dir: build
