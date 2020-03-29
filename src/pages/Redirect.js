@@ -46,7 +46,7 @@ class Redirect extends Component {
     };
 
     return (
-        <div>
+        <div style={ { display: "flex", flexDirection: "column", flex: 1, width: "100%" } }>
           { this.props.query.name }
           { showChatBot() }
           { showUrgentBlock() }
