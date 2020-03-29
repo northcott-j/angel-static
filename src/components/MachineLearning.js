@@ -26,7 +26,7 @@ class MachineLearning extends Component {
 
   render() {
     return (
-      <Paper style={ { display: "flex", flexDirection: "column", width: "85%",
+      <Paper style={ { display: "flex", flexDirection: "column", width: "55%", minWidth: "335px",
                      alignItems: "center", margin: "0 auto", padding: "10px 0 15px 0" } }>
         <form style={ { width: "95%" } } noValidate autoComplete="off">
           <TextField
