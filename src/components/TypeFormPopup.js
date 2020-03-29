@@ -30,6 +30,7 @@ class TypeFormPopup extends Component {
       "https://juanathan39angel.typeform.com/to/UEZnxw",
       {
         mode: 'popup',
+        autoClose: 1,
         onSubmit: function() {
           console.log('Typeform successfully submitted.')
         }
