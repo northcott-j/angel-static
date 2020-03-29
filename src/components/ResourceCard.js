@@ -43,9 +43,6 @@ export default function ResourceCard(resource) {
         <Button size="small" color="primary" href={ "tel:" + resource.phone } target="_blank">
           Call
         </Button>
-        <Button size="small" color="primary" href={ "mailto://" + resource.email } target="_blank">
-          Email
-        </Button>
         <Button size="small" color="primary" href={ "https://" + resource.website } target="_blank">
           Visit Website
         </Button>
