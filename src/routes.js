@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import App from './App';
 import AppContext from './app-context';
 import Home from './pages/Home';
-import Resources from './pages/Resources';
+import Redirect from './pages/Redirect';
 
 
 const Routes = () => (
@@ -12,7 +12,7 @@ const Routes = () => (
           {(context) => (
             <Switch>
               <Route exact path="/" render={(props) => <Home context={ context } query={ context.parseQuery(props.location) } />} />
-              <Route exact path="/resources" render={(props) => <Resources context={ context } query={ context.parseQuery(props.location) } />} />
+              <Route exact path="/resources" render={(props) => <Redirect context={ context } query={ context.parseQuery(props.location) } />} />
             </Switch>
           )}
         </ AppContext.Consumer>
